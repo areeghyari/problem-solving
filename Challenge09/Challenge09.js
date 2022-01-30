@@ -15,12 +15,12 @@
 //  
 // ------------------------
 <p id="demo" ></p>
-let  arrInc = [20, 54, 89, 51];
-arrInc.forEach(myFunction)
+let  x = [20, 54, 89, 51];
+x.forEach(arrInc)
 
-document.getElementById("demo").innerHTML = arrInc;
+document.getElementById("demo").innerHTML = x;
 
-function myFunction(item, index, arr) {
+function arrInc (item, index, arr) {
   arr[index] = item +10 ;
 }
 
@@ -36,8 +36,8 @@ function myFunction(item, index, arr) {
 // ------------------------
 <p id="demo"></p>
 
-let roundDecimals=  [5.4, 5.5 ,6.7, 6.8];
-roundDecimals.forEach(myFunction)
+let x=  [5.4, 5.5 ,6.7, 6.8];
+x.forEach(roundDecimals)
 
 let (item,index) = num.toFixed();
 
