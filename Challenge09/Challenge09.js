@@ -14,6 +14,7 @@
 //  [20, 54, 89, 41] ==> [30, 64, 99, 51]
 //  
 // ------------------------
+ exercise04
 
     const arrInc = (arr) => {
       let result = [];
@@ -21,7 +22,6 @@
       result.push(element+10)
    });
    return result;
-}
 
 
 
@@ -33,6 +33,7 @@
 //  [5.4, 5.5 ,6.7, 6.8] ==> [5, 6, 7, 7]
 // 
 // ------------------------
+ exercise04
 
      const roundDecimals = (arr) => {
     let value=[];
@@ -73,7 +74,7 @@
 //         workHours: 9,
 //         salary: "3200$"
 //     }
-// ]
+// 
 // 
 //  ==>
 //
@@ -106,18 +107,17 @@
 //
 
 // ------------------------
-const employeesBonus = (arr) => {
-  arr.forEach(add => {
-    if(add.workHours >8){
+      const employeesBonus = (arr) => {
+       arr.forEach(add => {
+        if(add.workHours >8){
         add.salary=(parseInt(add.salary) + 100) + `$`;
-    }else{
+     }else{
         add.salary=(parseInt(add.salary) + 50) + `$`;
     }
     
-});
-return arr;
-
-   }
+          });
+        return arr;
+      }
 
 // 4) ---------------------
 // 
