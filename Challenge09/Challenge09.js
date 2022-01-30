@@ -14,14 +14,13 @@
 //  [20, 54, 89, 41] ==> [30, 64, 99, 51]
 //  
 // ------------------------
-<p id="demo" ></p>
-let  arrInc = [20, 54, 89, 51];
-arrInc.forEach(myFunction)
 
-document.getElementById("demo").innerHTML = arrInc;
-
-function myFunction(item, index, arr) {
-  arr[index] = item +10 ;
+    const arrInc = (arr) => {
+      let result = [];
+    arr.forEach(element => {
+      result.push(element+10)
+   });
+   return result;
 }
 
 
@@ -34,15 +33,14 @@ function myFunction(item, index, arr) {
 //  [5.4, 5.5 ,6.7, 6.8] ==> [5, 6, 7, 7]
 // 
 // ------------------------
-<p id="demo"></p>
 
-let roundDecimals=  [5.4, 5.5 ,6.7, 6.8];
-roundDecimals.forEach(myFunction)
-
-let (item,index) = num.toFixed();
-
-document.getElementById("demo").innerHTML = (item,index);
-
+     const roundDecimals = (arr) => {
+    let value=[];
+   arr.forEach(app => {
+     value.push(Math.round (app))
+  });
+  return value;
+}
 
 // 3) ---------------------
 // 
@@ -109,8 +107,17 @@ document.getElementById("demo").innerHTML = (item,index);
 
 // ------------------------
 const employeesBonus = (arr) => {
-    // write your code here
-}
+  arr.forEach(add => {
+    if(add.workHours >8){
+        add.salary=(parseInt(add.salary) + 100) + `$`;
+    }else{
+        add.salary=(parseInt(add.salary) + 50) + `$`;
+    }
+    
+});
+return arr;
+
+   }
 
 // 4) ---------------------
 // 
@@ -127,7 +134,21 @@ const employeesBonus = (arr) => {
 // ==> 200
 // ------------------------
 const mostExpensive = (budget, mouseArray, keyBoardArray) => {
-    // write your code here
-}
 
 module.exports = { arrInc, roundDecimals, employeesBonus, mostExpensive };
+let allowedTobuy = [];
+keyBoardArray.forEach(possKey => {
+    mouseArray.forEach(possMou => {
+        if (possKey + possMou <= budget)
+        allowedTobuy.push(possKey + possMou);
+   
+   
+      });
+});
+let expCom = allowedTobuy[0];
+allowedTobuy.forEach(high => {
+    if (high > expCom) {
+    expCom = high; }
+    else{}
+});
+}
