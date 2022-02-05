@@ -27,16 +27,16 @@
 // -------------------------------------------------------------------------------------------------------
 
 const customerAndAge = (obj) => {
-    let custArr = [];
-    function CustomersData(name, age) {
-      this.customerName = name;
-      this.customerAge = ingredients;
-      custArr.push(this);
-    }
-    for (i = 0; i < custArr.length; i++) {
-  
-      console.log(`<p> Customer Name is" ${custArr[i]} , Age ${custArr[i]} </p>`);
-    }
+  let custArr = [];
+  function Customers(name, age) {
+    this.customerName = name;
+    this.customerAge = ingredients;
+    custArr.push(this);
+  }
+  for (i = 0; i < custArr.length; i++) {
+
+    console.log(`<p> Customer Name is" ${custArr[i]} , Age ${custArr[i]} </p>`);
+  }
   };
 
 
@@ -65,16 +65,16 @@ const customerAndAge = (obj) => {
 
 
     let objectInfo = {
-        name: "pizza",
-        ingredients: ["bread", "tomato", "chicken", "mayo"],
-        cookTime: "twoHours",
-        price: "25$",
-      };
-      function getRecipeKey() {
-        for (const property in objectInfo) {
-          console.log(`${property}: ${objectInfo[property]}`);
-        }
+      name: "pizza",
+      ingredients: ["bread", "tomato", "chicken", "mayo"],
+      cookTime: "twoHours",
+      price: "25$",
+    };
+    function getRecipeKey() {
+      for (const property in recipeInfo) {
+        console.log(`${property}: ${recipeInfo[property]}`);
       }
+          }
       getRecipeKey();
     
 
@@ -88,30 +88,31 @@ const customerAndAge = (obj) => {
 
 const courses = [
   {
-    course: 'Java',
-    Instructor: 'David',
-    Students: ['Lincoln', 'Ruth', 'Briana', 'Suzy', 'Greta'],
-    GroupName: 'Stars',
-  },
-  {
-    course: 'JavaScript',
-    Instructor: 'Van',
-    Students: ['Alphonso', 'Daley', 'Dax', 'Karter', 'Jorja'],
-    GroupName: 'Nerd-ware',
-  },
-  {
-    course: 'Python',
-    Instructor: 'Delaney',
-    Students: ['Barney', 'Kalé', 'Alisha'],
-    GroupName: 'Whats-Up',
-  },
-  {
-    course: 'DotNet',
-    Instructor: 'Keanna',
-    Students: ['Oli', 'Gisselle', 'Pru'],
-    GroupName: 'Lol',
-  },
-];
+    {
+      course: 'Java',
+      Instructor: 'David',
+      Students: ['Lincoln', 'Ruth', 'Briana', 'Suzy', 'Greta'],
+      GroupName: 'Stars',
+    },
+    {
+      course: 'JavaScript',
+      Instructor: 'Van',
+      Students: ['Alphonso', 'Daley', 'Dax', 'Karter', 'Jorja'],
+      GroupName: 'Nerd-ware',
+    },
+    {
+      course: 'Python',
+      Instructor: 'Delaney',
+      Students: ['Barney', 'Kalé', 'Alisha'],
+      GroupName: 'Whats-Up',
+    },
+    {
+      course: 'DotNet',
+      Instructor: 'Keanna',
+      Students: ['Oli', 'Gisselle', 'Pru'],
+      GroupName: 'Lol',
+    },
+  ];
 
 const getInfo = (arr) => {
   let coursesName = [];
@@ -122,7 +123,6 @@ const getInfo = (arr) => {
       studentsName.push(StudentCount);
     });
   });
-
   return { coursesName, studentsName };
 };
 
@@ -145,16 +145,16 @@ const getInfo = (arr) => {
 //  ------------------------------------------------------------------------------------------------------
 
 const getStudents = (arr) => {
-    let arrang = [];
-    arr.forEach(student => {
-      courses.forEach(course => {
-        course.Students.forEach(count => {
-          if (count === student)
-          arrang.push({ Student: student, course: course.course });
-             });
-        });
-        });
-    return result;
+  let arrang = [];
+  arr.forEach(student => {
+    courses.forEach(course => {
+      course.Students.forEach(count => {
+        if (count === student)
+        arrang.push({ Student: student, course: course.course });
+      });
+    });
+  });
+  return result;
   };
 
 
