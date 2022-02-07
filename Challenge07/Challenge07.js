@@ -19,21 +19,14 @@
 // ------------------------
 
 const objLat = (obj) => {
-    let obj = {
-        firstName: "Sami",
-        lastName: "Ahmad",
-        age: 35,
-        hobby: "writting",
+    let value;
+    value=  Object.values(obj);
+    value[0]=value[0].charAt(0).toUpperCase()+value[0].slice(1);
+    value[1]=value[1].charAt(0).toUpperCase()+value[1].slice(1);
 
+    return `my name is ${value[0]} ${value[1]} I am ${value[2]} YO, and I love ${value[3]}.`;
 
-       personData: function () {
-    console.log(`my name is ${this.firstName, this.lastName} I am ${this.age} YO, and I love ${this.hobby}`);
-
-}
-}
-obj.personData();
 };
-
 
 // 2) ---------------------
 //
@@ -96,32 +89,41 @@ obj.personData();
 
 // ------------------------
 const cvFormatter = (arr) => {
-    recieveInfo = [];
-    function recieveInfo(firstName, LastName, yearsOfExperience, tech) {
-        this.appName = firstName;
-        this.appLastName = LastName;
-        this.yrsOfex = yearsOfExperience;
-        this.techo = tech;
-        if (yrsOfex >= 1) {
-            acceptedCvs.push(this.fullName, this.techo);
-        }
-
-    }
-    let jasonCv = new cvAccepted(Jason, James, 20, "JS");
-    let shiraCv = new cvAccepted(Shira, null, 5, ".Net");
-    let dmitriCv = new cvAccepted(Dmitri, Akkerman, 1, "Python");
-    let isabellaCv = new cvAccepted(Isabella, null, 7, "Java");
-
-    if (cvAccepted.appName != "null" && cvAccepted.appLastName != "null") {
-        fullName = (cvAccepted.appName + cvAccepted.appLastName);
-    } else if (cvAccepted.appName != "null") {
-        fullName = cvAccepted.appName;
-    } else {
-        fullName = cvAccepted.appLastName;
-    }
-};
-
     
+    let yearExp=[]; 
+    let num=0;
+    for (let i=0; i < arr.length; i++) {
+        if (arr[i].yearsOfExperience > 1) {
+            yearExp[num] = arr[i];
+            num++;
+        }
+    }
+   
+    let outArr = function(yearExp) {
+        return yearExp.map(function(aboveYear){
+            let newName={};
+                if (aboveYear.firstName ==null) {
+                    newName["fullName"] = aboveYear.lastName; 
+                    newName["tech"]= aboveYear.tech ; 
+                }else if(aboveYear.lastName ==null)
+                {
+                    newName["fullName"] = aboveYear.firstName;
+                    newName["tech"]= aboveYear.tech ; 
+
+                }else {
+                    newName["fullName"] = `${aboveYear.firstName} ${aboveYear.lastName}`; 
+                    newName["tech"]= aboveYear.tech ; 
+                }
+        
+            return newName;
+        })
+    }
+    let outArrfinal = outArr(yearExp);
+ 
+  return outArrfinal;
+
+ 
+};
 
 // 3) ---------------------
 //
@@ -151,33 +153,36 @@ const applicationsStatics = (arr) => {
         java_Devs: 0,
         totalApplicants: 0,
         rejectedApplicants: 0,
+    };
+
+    arr.map(function (item, idx) {
+
+        if (item.yearsOfExperience <= 1 || (item.firstName == null && item.lastName == null))
+            result.rejectedApplicants += 1;
+
+        result.totalApplicants += 1;
+
+        switch (item.tech) {
+            case "Java":
+                result.java_Devs += 1;
+                break;
+
+            case ".Net":
+                result.dotNet_Devs += 1;
+                break;
+
+            case "JS":
+                result.javaScript_Devs += 1;
+                break;
+
+            case "Python":
+                result.python_Devs += 1;
+                break;
+
+        }
     }
-
-
-    for (let i = 0; i < acceptedCvs.length; i++) {
-        if ((doneCvs[i].firstName == "null" || doneCvs[i].firstName == "") && (doneCvs[i].lastName == "null" || doneCvs[i].lastName == "")) {
-            rejectedApplicants = rejectedApplicants + 1;
-        }
-
-        if (doneCvs[i].techo == "JS") {
-            result.javaScript_Devs = result.javaScript_Devs + 1;
-        }
-
-
-        if (doneCvs[i].tech == ".Net") {
-            result.dotNet_Devs = result.dotNet_Devs + 1;
-        }
-
-        if (doneCvs[i].tech == "Python") {
-            result.python_Devs = result.python_Devs + 1;
-        }
-
-        if (doneCvs[i].tech == "Java") {
-            result.java_Devs = result.java_Devs + 1;
-        }
-
-    }
-    return result;
+    )
+    return result;  
 
 };
 
@@ -303,15 +308,16 @@ let data = {
 //  2- You need to round the average to the nearest lower number 
 
 const classesAvg = (data) => {
-    for (let i = 0; i < data.grades[i].length; i++) {
-        for (let h = 0; h < data.grades[i].classes.length; h++) {
-            let average = (arr) => arr.reduce((s , d) => s + d) / arr.length;
-            data.grades[i].classes[h].avg = Math.floor(average(data.grades[i].classes[h].classScores));
-
-
+    let all=0;
+    for(let i=0 ; i < data.grades.length ; i++){
+       for(let y=0 ; y < data.grades[i].numberOFClasses ; y++){
+        all = data.grades[i].classes[y].classScores.reduce(function(a,b){return a+b},0);
+            data.grades[i].classes[y].avg = Math.floor(all / (data.grades[i].classes[y].classScores.length));
+        } 
+        all=0;
         }
-    }
-    return data;
+
+    return data;   
 };
 
 module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };
