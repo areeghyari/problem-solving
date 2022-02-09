@@ -27,17 +27,12 @@
 // -------------------------------------------------------------------------------------------------------
 
 const customerAndAge = (obj) => {
-  let custArr = [];
-  function Customers(name, age) {
-    this.customerName = name;
-    this.customerAge = ingredients;
-    custArr.push(this);
+  const arrOfCustomer = [];
+  for (const i in obj){
+      arrOfCustomer.push("Customer Name :" + i +" , " + "Age :" + obj[i]);
   }
-  for (i = 0; i < custArr.length; i++) {
-
-    console.log(`<p> Customer Name is" ${custArr[i]} , Age ${custArr[i]} </p>`);
-  }
-  };
+  return arrOfCustomer
+};
 
 
 // -------------------------------------------------------------------------------------------------------
@@ -64,19 +59,14 @@ const customerAndAge = (obj) => {
 // -------------------------------------------------------------------------------------------------------
 
 
-    let objectInfo = {
-      name: "pizza",
-      ingredients: ["bread", "tomato", "chicken", "mayo"],
-      cookTime: "twoHours",
-      price: "25$",
-    };
-    function getRecipeKey() {
-      for (const property in recipeInfo) {
-        console.log(`${property}: ${recipeInfo[property]}`);
-      }
-          }
-      getRecipeKey();
-    
+const getEntries = (obj) => {
+  let Recipe = [];
+  for (const [key, value] of Object.entries(obj)) {
+    Recipe.push(key + ": " + value);
+  }
+  return Recipe
+};
+
 
 // -------------------------------------------------------------------------------------------------------
 // Challenge 03
@@ -87,32 +77,32 @@ const customerAndAge = (obj) => {
 // -------------------------------------------------------------------------------------------------------
 
 const courses = [
+  
+    {
+    course: 'Java',
+    Instructor: 'David',
+    Students: ['Lincoln', 'Ruth', 'Briana', 'Suzy', 'Greta'],
+    GroupName: 'Stars',
+  },
   {
-    {
-      course: 'Java',
-      Instructor: 'David',
-      Students: ['Lincoln', 'Ruth', 'Briana', 'Suzy', 'Greta'],
-      GroupName: 'Stars',
-    },
-    {
-      course: 'JavaScript',
-      Instructor: 'Van',
-      Students: ['Alphonso', 'Daley', 'Dax', 'Karter', 'Jorja'],
-      GroupName: 'Nerd-ware',
-    },
-    {
-      course: 'Python',
-      Instructor: 'Delaney',
-      Students: ['Barney', 'Kalé', 'Alisha'],
-      GroupName: 'Whats-Up',
-    },
-    {
-      course: 'DotNet',
-      Instructor: 'Keanna',
-      Students: ['Oli', 'Gisselle', 'Pru'],
-      GroupName: 'Lol',
-    },
-  ];
+    course: 'JavaScript',
+    Instructor: 'Van',
+    Students: ['Alphonso', 'Daley', 'Dax', 'Karter', 'Jorja'],
+    GroupName: 'Nerd-ware',
+  },
+  {
+    course: 'Python',
+    Instructor: 'Delaney',
+    Students: ['Barney', 'Kalé', 'Alisha'],
+    GroupName: 'Whats-Up',
+  },
+  {
+    course: 'DotNet',
+    Instructor: 'Keanna',
+    Students: ['Oli', 'Gisselle', 'Pru'],
+    GroupName: 'Lol',
+  },
+];
 
 const getInfo = (arr) => {
   let coursesName = [];
@@ -145,17 +135,24 @@ const getInfo = (arr) => {
 //  ------------------------------------------------------------------------------------------------------
 
 const getStudents = (arr) => {
-  let arrang = [];
-  arr.forEach(student => {
-    courses.forEach(course => {
-      course.Students.forEach(count => {
-        if (count === student)
-        arrang.push({ Student: student, course: course.course });
-      });
-    });
-  });
-  return result;
-  };
+  var arrStu = [];
+  for ( let i = 0 ; i <arr.length ; i++)
+  {
+      for(const x in courses){
+          for(let k = 0 ;k <courses[x]["Students"].length;k++){
+              if( courses[x]["Students"][k] == arr[i] ){
+                arrStu.push(
+                      {
+                          "Student" : arr[i],
+                          "course" : courses[x]["course"]
+                      }
+                  );
+              }
+          }
+      }
+  }
+  return arrStu;
+};
 
 
 module.exports = {
